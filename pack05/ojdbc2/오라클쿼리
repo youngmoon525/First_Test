@@ -1,0 +1,61 @@
+-- USER_INFO 테이블에 데이터를 삽입(INSERT)해보기 .
+
+-- INSERT INTO TABLE_NAME(COL1,COL2...)
+--             VALUES (COL1에넣을값,..2...3.....,) == 컬럼 갯수랑 데이터갯수가 틀리면 오류 발생.
+
+--1
+INSERT INTO USER_INFO (STUDENT_NO , USER_ID)
+VALUES (1 , 'KYM');
+
+-- INSERT문을 사용해서 데이터를 수정하게되면(추가) 트랜잭션이 발생 한다. ( 작업 한 결과를 임시로 가지고 있음. )
+-- 어떠한 오류가 발생하거나 데이터 추가를 잘못한경우 되돌릴수가있음. COMMIT(확정) , ROLLBACK(취소)
+--2 , --4
+SELECT * FROM USER_INFO order by student_no;
+
+SELECT * FROM student;
+--3
+--ROLLBACK;
+
+DELETE FROM USER_INFO;
+
+COMMIT;     -- 커밋을 하게 되면 다시 롤백할수가없다 (== 임시=>확정 , 이제는 임시데이터가 아니라 확정된데이터이기때문에 ROLLBACK으로는 되돌릴수없음)
+  
+  -- 모든 컬럼에 데이터를 넣는경우에 (데이터의갯수가 컬럼갯수랑같을때) (COL1)<-생략할수가있다.
+INSERT INTO user_info values (1, 'USER_ID', 'USER_PW', 'FIRST_NAME', 'LAST_NAME', sysdate, sysdate);
+  
+  ROLLBACK;
+  
+  
+  
+  --CRUD 중에 U UPDATE
+  -- UPDATE 쿼리를 이용해서 내가 등록한 USER_INFO를 수정해보기.
+  -- UPDATE TABLE_NAME 
+  --SET COL_NAME = '여기에 넣을값'  
+  --※ WHERE COL = '조건'  ※
+  
+  
+  UPDATE user_info
+  SET user_pw = '9999';
+  
+  
+  SELECT * FROM user_info;
+  
+  ROLLBACK;
+  
+  COMMIT;
+  
+  
+  --CRUD D(DELETE) 삭제
+  DELETE FROM user_info WHERE student_no = 1 and user_id='USER_ID'
+
+
+
+
+-- 로그인 처리를 위한 쿼리를 작성하시오 . (USER_INFO 테이블 이용)
+-- 예) 사용자가 girok 아이디 입력 , 1212 비밀번호 입력 => 로그인 됨 .
+-- 그외에 아이디 girok 아이디 입력 , 1111 비밀번호 입력 => 로그인 실패 
+
+SELECT * FROM USER_INFO;
+
+
+
