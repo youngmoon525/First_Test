@@ -7,21 +7,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class Test02_Request
- */
+
 @WebServlet("/Test02_Request")
 public class Test02_Request extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-  
-    public Test02_Request() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		// request.getParameter에 들어가는 키값은 form태그 안쪽에 있는 태그의 name
+		System.out.println(request.getParameter("id"));
+		System.out.println(request.getParameter("pw"));
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

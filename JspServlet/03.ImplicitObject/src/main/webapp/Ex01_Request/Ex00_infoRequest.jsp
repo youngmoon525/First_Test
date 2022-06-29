@@ -71,5 +71,10 @@
 			<td><%=request.getContextPath()%></td>
 		</tr>
 	</table>
+	
+	<a><%=(String)session.getAttribute("session") %></a>
+	
+	
+	
 </body>
 </html>
