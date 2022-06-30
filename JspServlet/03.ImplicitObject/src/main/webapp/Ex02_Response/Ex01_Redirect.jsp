@@ -22,13 +22,25 @@
 		  }
 	-->
 	
-	<%
+<%-- 	<%
+
 		if(request.getParameter("id").equals("admin") &&
 				request.getParameter("pw").equals("admin1234")){
 		response.sendRedirect("http://www.google.com");
 		}
-	%>
-	
+
+	%> --%>
+	<%
+		// URL , FORM태그 등을 통해서 들어온 정보가 x
+		// RquestDispatcher라는 것을통해서 'Forward'방식으로 넘어옴 == attribute
+		// Attribute는 여러가지 데이터타입을 넣을수가있음(Object , ArrayList,DTO)
+		if(request.getAttribute("id").equals("admin") &&
+				request.getAttribute("pw").equals("admin1234")){
+			
+		}
+
+	%> 
+	<h1>한글</h1>
 	<!-- Ex01_Response.java(Servlet,Controller)를 통해서 여기까지 와보기  -->
 	
 	
