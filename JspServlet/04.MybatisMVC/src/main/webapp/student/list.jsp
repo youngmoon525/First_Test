@@ -13,7 +13,7 @@
 	<!-- 학생의 이름  student_no  student_name,  user_id, ,  first_name,  last_name,
 			 -->
 	<h1 style="text-align: center;">학생정보를 보여 줍니다</h1>
-
+<%-- <%response.setIntHeader("Refresh", 3); %> --%>
 	<table class="styled-table">
 		<thead>
 			<tr>
