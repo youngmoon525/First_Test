@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import customer.CustomerDAO;
+import customer.CustomerDTO;
 
 @WebServlet("*.cu")
 public class CustomerController extends HttpServlet {
@@ -23,7 +24,17 @@ public class CustomerController extends HttpServlet {
 		if (req.getServletPath().equals("/list.cu")) {
 			req.setAttribute("list", dao.getList());// jsp에서 사용할수있게 담음(저장)
 			rd = req.getRequestDispatcher("customer/listjstl.jsp");
+		}else if (req.getServletPath().equals("/insert.cu")) {
+			CustomerDTO dto = new CustomerDTO();
+			dto.setName(req.getParameter("name"));
+			dto.setPhone(req.getParameter("phone"));
+			dto.setEmail(req.getParameter("email"));
+			dto.setGender(req.getParameter("gender"));
+			int result = dao.insert(dto);
+			return ;
 		}
+		
+		
 		rd.forward(req, resp);
 	}
 

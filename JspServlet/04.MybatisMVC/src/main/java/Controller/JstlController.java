@@ -18,6 +18,10 @@ public class JstlController extends HttpServlet {
 		rd = req.getRequestDispatcher("error/404.jsp"); // 나중에 추가 예정(2022.06.30 KYM)
 		if (req.getServletPath().equals("/list.js")) {
 			rd = req.getRequestDispatcher("jstl/list.jsp"); 
+		}else if (req.getServletPath().equals("/listfmt.js")) {
+			rd = req.getRequestDispatcher("jstl/listfmt.jsp"); 			
+		}else if (req.getServletPath().equals("/listfn.js")) {
+			rd = req.getRequestDispatcher("jstl/listfn.jsp"); 			
 		}
 		rd.forward(req, resp);
 	}
