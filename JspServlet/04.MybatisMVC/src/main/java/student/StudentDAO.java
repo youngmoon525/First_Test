@@ -140,6 +140,49 @@ public class StudentDAO {
 		
 		return dto;
 	}
+
+	public int modifyInfo(StudentDTO dto) {
+		getConn();
+		String sql = " UPDATE USER_INFO "
+				+ "SET FIRST_NAME = ?, LAST_NAME=? "
+				+ "WHERE STUDENT_NO = ? and  USER_ID=?  " ; 
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, dto.getFirst_name());
+			ps.setString(2, dto.getLast_name());
+			ps.setInt(3, dto.getStudent_no());
+			ps.setString(4, dto.getUser_id());
+			return ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			dbClose();
+		}
+		
+		return 0;
+	}
+
+	public int deleteInfo(String student_no, String user_id) {
+		getConn();
+		String sql = "  DELETE FROM USER_INFO WHERE student_no = ? AND user_id=?"; 
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, student_no);
+			ps.setString(2, user_id);
+			
+			
+			
+			return ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			dbClose();
+		}
+		
+		return 0;
+	}
 	
 	
 	
