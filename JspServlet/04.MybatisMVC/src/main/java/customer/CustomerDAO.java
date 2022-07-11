@@ -52,6 +52,12 @@ public class CustomerDAO {
 		sql.commit();// Mybatis는 Auto Commit속성이 기본적으로 false 임
 		return result;
 	}
+
+	public int update(CustomerDTO dto) {
+		int result = sql.update("cus.update",dto);
+		sql.commit();// Mybatis는 Auto Commit속성이 기본적으로 false 임
+		return result;
+	}
 	
 	
 }

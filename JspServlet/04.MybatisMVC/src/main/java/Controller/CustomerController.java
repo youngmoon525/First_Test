@@ -1,6 +1,7 @@
 package Controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -31,6 +32,18 @@ public class CustomerController extends HttpServlet {
 			dto.setEmail(req.getParameter("email"));
 			dto.setGender(req.getParameter("gender"));
 			int result = dao.insert(dto);
+			return ;
+		}else if (req.getServletPath().equals("/update.cu")) {
+			CustomerDTO dto = new CustomerDTO();
+			dto.setId(Integer.parseInt(req.getParameter("id")));
+			dto.setName(req.getParameter("name"));
+			dto.setPhone(req.getParameter("phone"));
+			dto.setEmail(req.getParameter("email"));
+			dto.setGender(req.getParameter("gender"));
+			int result = dao.update(dto);
+			PrintWriter out = resp.getWriter();//응답
+			out.println(result);
+			
 			return ;
 		}
 		

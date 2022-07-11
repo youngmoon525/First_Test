@@ -12,7 +12,11 @@
 		insert into customer (name , email , phone , gender)
 		values (#{name} , #{email} , #{phone} , #{gender})
 	</insert>
-
+	<update id="update">
+		update customer
+		set name=#{name},email=#{email},phone=#{phone},gender=#{gender}
+		where id=#{id}
+	</update>
 	<!-- 다른 쿼리가 필요하다면 select태그를 이용해서 추가 <select id="listselect2" resultType=""> 
 		</select> -->
 
